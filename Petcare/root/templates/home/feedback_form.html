@@ -1,0 +1,38 @@
+
+<html>
+    <head><META http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <style>
+            body{
+                font-family:Arial,sans-serif;background-color:#f4f4f4;text-align:center
+            }
+            h1
+            {
+                color:#333
+            }
+            form
+            {
+                max-width:400px;margin:0 auto;padding:20px;background-color:#fff
+            }
+            textarea
+            {
+                width:100%;padding:10px;margin:10px 0;border:1px solid #ccc;border-radius:3px
+            }
+        </style>
+    </head><body><u></u>
+        
+
+
+    
+    
+
+    <div>
+        <h1>Submit Feedback</h1>
+        <form method="post" target="_blank">
+            {% csrf_token %}
+            <textarea name="feedback_message" rows="5" cols="50"></textarea>
+            <br>
+            <button type="submit">Submit Feedback</button>
+        </form>
+    </div>
+    
+    </body></html>

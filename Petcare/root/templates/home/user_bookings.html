@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Bookings</title>
+</head>
+<body>
+    <h1>User Bookings</h1>
+
+    {% if user_bookings %}
+        <ul>
+            {% for booking in user_bookings %}
+                <li>{{ booking.petname }} - {{ booking.booking_datetime }}</li>
+                <!-- Add other fields as needed -->
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No bookings found.</p>
+    {% endif %}
+</body>
+</html>

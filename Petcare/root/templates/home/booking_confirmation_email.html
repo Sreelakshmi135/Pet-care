@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>booking confirmation</title>
+</head>
+<body style="font-family: arial, sans-serif;">
+
+    <table style="width: 100%; max-width: 600px; margin: auto; border-collapse: collapse;">
+        <tr>
+            <td style="background-color: #007ae1; padding: 20px; text-align: center; color: white;">
+                <h2>booking confirmation</h2>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 20px;">
+                <p>dear {{ booking.userdetails.full_name }},</p>
+                <p>your booking has been confirmed. below are the details:</p>
+
+                <table style="width: 100%;">
+                    <tr>
+                        <td><strong>user:</strong></td>
+                        <td>{{ booking.userdetails.full_name }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>email:</strong></td>
+                        <td>{{ booking.userdetails.email }}</td>
+                    </tr>
+                   
+                </table>
+
+                <p>thank you for choosing our services. we look forward to serving you!</p>
+
+                <p>best regards,<br>
+                device revive</p>
+            </td>
+        </tr>
+        <tr>
+            <td style="background-color: #f5f5f5; padding: 10px; text-align: center;">
+                <p>&copy; 2023 device revive. all rights reserved.</p>
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Next Vaccine Countdown</title>
+
+<style>
+     body {
+        font-family: Arial, sans-serif;
+        background-color: #f3f3f3;
+        margin: 0;
+        padding: 0;
+    }
+    #clock-container {
+        text-align: center;
+        margin-top: 50px;
+    }
+    #clock, #due-timer {
+        margin-top: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        padding: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f3f3f3;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        flex-direction: column;
+    }
+    .title {
+        text-align: center;
+    }
+    .clock-container {
+        text-align: center;
+    }
+    .clock {
+        width: 300px;
+        height: 300px;
+        border-radius: 100%;
+        background: linear-gradient(to bottom right, #ff0000, #ffffff);
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+        border: 8px solid #fff;
+    }
+    .clock .timer {
+        font-size: 24px;
+        color: #fff;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+    .hand {
+        width: 2px;
+        height: 130px;
+        background-color: #333;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform-origin: bottom;
+        transform: translate(-50%, -100%) rotate(90deg);
+    }
+    .hand::after {
+        content: '';
+        width: 8px;
+        height: 8px;
+        background-color: #333;
+        border-radius: 50%;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .cute-heading {
+        font-family: 'Comic Sans MS', cursive, sans-serif;
+        font-size: 24px;
+        color: #333;
+    }
+</style>
+</head>
+<body>
+    <h1 class="cute-heading">A Paw-some Adventure Awaits in 90 Days!</h1>
+
+    <div id="clock">Calculating...</div>
+    <div id="due-timer">Next Due Date: Calculating...</div>
+
+<br>
+<div class="clock-container">
+    <div class="timer"></div>
+    <div class="clock">
+        <div class="hand"></div>
+    </div>
+</div>
+<a href="{% url 'user_index' %}" class="btn btn-lg btn-secondary mt-3 mt-md-4 px-4">Back</a>
+
+
+<script>
+    function updateClock() {
+        var now = new Date().getTime();
+        var future = new Date(now + 90 * 24 * 60 * 60 * 1000); // 90 days from now
+        var timeRemaining = future - now;
+
+        var days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+
+        document.querySelector('.timer').innerText = days;
+    }
+
+    updateClock();
+    setInterval(updateClock, 1000);
+    function updateClock() {
+        // Get the current date and time
+        var now = new Date().getTime();
+
+        // Calculate the next due date
+        var nextDueDate = new Date(now + 3 * 30 * 24 * 60 * 60 * 1000); // Next 3 months
+
+        // Calculate the difference between now and the next due date
+        var timeRemaining = nextDueDate - now;
+
+        // If timeRemaining is negative, set it to zero
+        timeRemaining = Math.max(timeRemaining, 0);
+
+        // Calculate days, hours, minutes, and seconds remaining
+        var days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+        // Format the time remaining
+        var formattedTime = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+        // Display the formatted time in the clock element
+        document.getElementById("clock").innerHTML = "Next 3 months: " + formattedTime;
+
+        // Display the next due date
+        document.getElementById("due-timer").innerHTML = "Next Due Date: " + nextDueDate.toLocaleDateString() + " " + nextDueDate.toLocaleTimeString();
+    }
+
+    // Call the updateClock function initially
+    updateClock();
+
+    // Update the clock every second
+    setInterval(updateClock, 1000);
+</script>
+</body>
+</html>

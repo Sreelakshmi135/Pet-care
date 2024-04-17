@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Leave Approval</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .btn-approve {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .btn-reject {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .btn:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Leave Requests</h2>
+        <table>
+            <tr>
+                <th>User Name</th>
+                <th>Leave Date</th>
+                <th>Leave Type</th>
+                <th>Reason</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            <!-- Loop through leave requests and populate the table rows -->
+            {% for leave_request in leave_requests %}
+            <tr>
+                <td>{{ leave_request.user_name }}</td>
+                <td>{{ leave_request.leave_date }}</td>
+                {% comment %} <td>{{ leave_request.user}}</td> {% endcomment %}
+                <td>{{ leave_request.leave_type }}</td>
+                <td>{{ leave_request.reason }}</td>
+                <td>{{ leave_request.status }}</td>
+                <td>
+                    <!-- Approve and Reject buttons -->
+                    <form id="leaveApprovalForm" method="post" action="{% url 'leave_approval_action' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="leave_ids[]" value="{{ leave_request.id }}">
+                        <button class="btn btn-approve" type="submit" name="action" value="approve">Approve</button>
+                        <button class="btn btn-reject" type="submit" name="action" value="reject">Reject</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <!-- JavaScript for handling leave approval/rejection -->
+    <script>
+        function approveLeave(id) {
+            // Perform AJAX request to approve leave request
+            // You can customize this function to send the request to your Django backend
+            alert('Leave request approved with ID: ' + id);
+        }
+
+        function rejectLeave(id) {
+            // Perform AJAX request to reject leave request
+            // You can customize this function to send the request to your Django backend
+            alert('Leave request rejected with ID: ' + id);
+        }
+    </script>
+</body>
+</html>

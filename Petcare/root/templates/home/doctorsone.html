@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor's Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #0073e6;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 36px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            margin-top: -40px;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        .doctor-image {
+            max-width: 100%;
+            border: 5px solid #0073e6;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Dr. John Smith</h1>
+        <p>Experienced Vetinerain& Surgeon</p>
+    </header>
+
+    <div class="container">
+        <img src="{% static 'home/img/testimonial-4.jpg' %}" alt="">
+       
+        
+        <h2>About Me</h2>
+        <p>
+            I am Dr. John Smith, a board-certified Vetinerian and surgeon with over 15 years of experience in the medical field. I am dedicated to providing the highest quality of care to my patients and have a strong commitment to medical excellence.
+        </p>
+
+        <h2>Experience</h2>
+        <p>
+            <strong>Medical Center Mumbai</strong><br>
+            Senior Physician<br>
+            2010 - Present
+        </p>
+        <p>
+            <strong>City Hospital ABC</strong><br>
+            Resident Physician<br>
+            2005 - 2010
+        </p>
+
+        <h2>Education</h2>
+        <p>
+            <strong>Medical School of Excellence</strong><br>
+            Doctor of Medicine (MD)<br>
+            Graduated in 2005
+        </p>
+
+        <h2>Specializations</h2>
+        <ul>
+            <li>Internal Medicine</li>
+            <li>Surgery</li>
+            <li>Cardiology</li>
+        </ul>
+    </div>
+</body>
+</html>

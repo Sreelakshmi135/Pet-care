@@ -1,0 +1,246 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>PetLover - Pet Care Website Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" http-equiv="refresh" content="1">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet"> 
+
+  
+
+    <!-- Flaticon Font -->
+    <link href="lib/flaticon/font/flaticon.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="{% static 'home/css/style.min.css' %}" rel="stylesheet">
+    <link href="{% static 'home/css/style.min.css' %}" rel="stylesheet">
+    <script src="{% static 'home/js/main.js' %}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-nGfGlUkuytmJsG8r+jdU9zBP6S+3bgP931mSTjqfS0Kli/xW5aknFvVLwAqD3kqs" crossorigin="anonymous">
+
+
+    <style>
+        .card {
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .card.selected {
+            transform: scale(1.1);
+        }
+        
+        /* Add header styles here */
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        
+        /* Add sidebar styles here */
+        .sidebar {
+            background-color:#ff6600;
+            color: #fff;
+            width: 250px;
+            position: fixed;
+            top: 40px; /* Adjusted to account for header height */
+            left: 0;
+            bottom: 0;
+            overflow-y: auto;
+            padding-top: 10px; /* Adjusted to account for header padding */
+        }
+        .sidebar ul li {
+            padding: 5px 20px; /* Adjusted padding */
+            font-size: 14px; /* Adjusted font size */
+        }
+        .container {
+            text-align: center;
+        }
+        
+        .sidebar ul li a {
+            font-size: 16px; /* Adjusted font size */
+            padding: 8px 12px; /* Adjusted padding */
+        }
+        
+        .sidebar ul {
+            padding-left: 0;
+            list-style: none;
+        }
+        
+        .sidebar ul li {
+            padding: 10px 20px;
+            /* Remove the border-bottom property */
+        }
+        
+        .sidebar ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+        
+        .sidebar ul li a:hover {
+            color: #fff;
+            background-color: #555;
+        }
+        
+        /* Adjust main content margin to account for sidebar and header */
+        .main-content {
+            margin-left: 280px; /* Adjusted margin to provide space for sidebar */
+            margin-top: 50px; /* Adjusted margin to account for header height */
+            padding: 20px; /* Add padding to main content */
+        }
+        
+    </style>        
+
+</head>
+
+<body>
+    
+    <!-- Topbar Start -->
+    <div class="container-fluid">
+        <div class="row bg-secondary py-2 px-lg-5">
+            <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
+                <div class="d-inline-flex align-items-center">
+                    <a class="text-white pr-3" href="">FAQs</a>
+                    <span class="text-white">|</span>
+                    <a class="text-white px-3" href="">Help</a>
+                    <span class="text-white">|</span>
+                    <a class="text-white pl-3" href="">Support</a>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center text-lg-right">
+                <div class="d-inline-flex align-items-center">
+                    <a class="text-white px-3" href="">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a class="text-white px-3" href="">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a class="text-white px-3" href="">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a class="text-white px-3" href="">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a class="text-white pl-3" href="">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row py-3 px-lg-5">
+            <div class="col-lg-4">
+                <a href="" class="navbar-brand d-none d-lg-block">
+                    <h1 class="m-0 display-5 text-capitalize"><span class="text-primary">..................    Paws and</span>Tails :<span class="text-secondary">Staff</span><span class="text-primary"> Page</span></h1>
+                  
+                </a>
+            </div>
+            <div class="col-lg-8 text-center text-lg-right">
+                <div class="d-inline-flex align-items-center">
+                    <div class="d-inline-flex flex-column text-center pr-3 border-right">
+                        <h6>Opening Hours</h6>
+                        <p class="m-0">8.00AM - 9.00PM</p>
+                    </div>
+               
+                    <div class="d-inline-flex flex-column text-center px-3 border-right">
+                        <p>Hello {{ request.user.username }} Have a nice day!</p>
+                        
+                    </div>
+                   
+                    
+                    <div class="dropdown">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="adminDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {% if user.is_authenticated %}
+                                <i class="fas fa-user"></i> {{ user.username }}
+                            {% else %}
+                                <i class="fas fa-user"></i> Login/Sign Up
+                            {% endif %}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="adminDropdown">
+                            {% if user.is_authenticated %}
+                            <a class="dropdown-item" href="{% url 'profile_update' %}" class="btn btn-primary ml-lg-3">Profile</a>
+                            <a class="dropdown-item" href="{% url 'logout' %}" class="btn btn-primary ml-lg-3">Logout</a>
+                            {% else %}
+                            <a class="dropdown-item" href="login">Login</a>
+                            <a class="dropdown-item" href="signin">Sign Up</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="d-inline-flex flex-column text-center pl-3">
+                        <h6>Call Us</h6>
+                        <p class="m-0">+012 345 6789</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+
+    <!-- Navbar Start -->
+	<div class="container-fluid p-0">
+		
+   
+</div>
+
+ 
+
+    <!-- Navbar End -->
+
+    <!-- Main Content Start -->
+    <div class="container py-5">
+        <h2 class="text-secondary mb-3">WELCOME {{ request.user.username }} Have a nice day!</h2> 
+       
+        <h5 class="text-muted mb-3"> We are thrilled to welcome you to our team! </h5>
+        <p>   &nbsp;&nbsp;&nbsp;&nbsp; Feel free to reach out to your colleagues and team leads if you have any questions or need support as you settle into your role. We believe in open  &nbsp;   ......communication and fostering a positive work environment.
+            welcome aboard! We look forward to working together and achieving success as a team.</p>
+        <ul class="list-inline">
+            <h5><i class="fa fa-check-double text-secondary mr-3"></i>Best Regards,</h5></li>
+            <h5><i class="fa fa-check-double text-secondary mr-3"></i>@pawsandtails</h5></li>
+
+    </div>
+    <!-- Main Content End -->
+   
+    <!-- Sidebar Start -->
+    <br><br>
+    <div class="sidebar">
+        <ul>
+            <li> <a href="{%url 'staff_index'%}" class="btn btn-lg btn-primary mt-3 px-4">Pet-Care Appointments </a>
+                
+                
+                <li><a href="{%url 'staff_service'%}" class="btn btn-lg btn-primary mt-3 px-4">View Today's Services</a></li>
+                
+            <li><a href="{%url 'boardingindex'%}" class="btn btn-lg btn-primary mt-3 px-4">Boarding Services</a></li>
+            <li><a href="{%url 'VaccDetails'%}" class="btn btn-lg btn-primary mt-3 px-4">Vaccination</a></li>
+            <li><a href="{%url 'staff_leave'%}" class="btn btn-lg btn-primary mt-3 px-4">Apply Leave</a></li>
+            <li><a href="{%url 'staff_service'%}" class="btn btn-lg btn-primary mt-3 px-4">View Today's Services</a></li>
+            <li>
+                <a href="#">Pages</a>
+                <ul>
+                    <li><a href="blog.html">Blog Grid</a></li>
+                    <li><a href="single.html">Blog Detail</a></li>
+                </ul>
+            </li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
+            <!-- Add more links as needed -->
+        </ul>
+    </div>
+    <!-- Sidebar End -->
+
+    <!-- JavaScript libraries and scripts -->
+</body>
+
+</html>

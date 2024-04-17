@@ -1,0 +1,339 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Booking</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .confirmation-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .confirmation-container h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            background-color: #eaf7ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .custom-input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .confirm-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .confirm-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Confirm Booking</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <style>
+            body {
+                font-family: 'Open Sans', sans-serif;
+                background-color: #f8f8f8;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+            }
+    
+            .confirmation-container {
+                background-color: #8AAAE5;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+                max-width: 800px;
+                width: 100%;
+                text-align: center;
+            }
+    
+            .confirmation-container h1 {
+                color: #00246B;
+                margin-bottom: 20px;
+                font-family: 'Roboto', sans-serif; /* Use Roboto font */
+                font-weight: bold; /* Set the font weight to bold */
+            }
+            
+            
+            
+    
+            .form-group {
+                margin-bottom: 20px;
+            }
+    
+            label {
+                font-weight: bold;
+            }
+    
+            .form-control {
+                width: 100%;
+                padding: 10px;
+                border-radius: 4px;
+                border: 1px solid #ddd;
+                transition: border-color 0.3s ease;
+            }
+    
+            .form-control:focus {
+                outline: none;
+                border-color: #4CAF50;
+            }
+            .pay-now-button {
+                background-color: #4CAF50;
+                color: white;
+                padding: 12px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 16px;
+                transition: background-color 0.3s ease;
+            }
+            
+            .pay-now-button:hover {
+                background-color: #45a049;
+            }
+            
+    
+            
+        </style>
+    </head>
+    <body>
+    
+        <div class="confirmation-container">
+            <h1>Confirm your Booking</h1>
+            
+            <div class="form-group">
+              
+                <input type="text" class="form-control custom-input" id="username" name="charge" value="Charge: {{ boarding.boarding_charge }} Rs." readonly>
+            </div>
+    
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" class="form-control" id="fullName" name="full_name" value="{{ user.username }}">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="eMail">Email</label>
+                        <input type="email" class="form-control" id="eMail" name="email" value="{{ user.email }}">
+                    </div>
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" id="username" name="username" value="{{ user.username }}">
+                    </div>
+                </div>
+                
+            </div>
+    
+          
+      
+    
+        <form method="post" action="{% url 'confirmbooking' boarding_id=37 %}">
+            {% csrf_token %}
+    
+            <script src="https://checkout.razorpay.com/v1/checkout.js"
+            data-key="rzp_test_Y2yeTt6Auyhn36" 
+            data-amount="{{ boarding.boarding_charge }}00" 
+            data-order_id="{{Payment.id}}"
+    
+            data-name="PROFFESSIONAL"
+            data-description="dJANGO AND dATA sCIENCE"
+            data-image="https://example.com/your_logo.jpg"
+            data-prefill.name="PP"
+            data-prefill.email="pp@gmail.com"
+            data-theme.color="	#ADD8E6"></script>
+            <input type="hidden" custom="Hidden Element" name="hidden"/>
+            <button type="submit" class="pay-now-button">Pay Now</button>
+            </form>
+            <br>
+           
+        </div>
+    </form>
+    </div>
+    
+    </body>
+    </html> 
+    
+    
+       
+
+        <!-- Add other details as needed -->
+
+    
+
+  
+    
+
+
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Booking</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .confirmation-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .confirmation-container h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            background-color: #eaf7ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .custom-input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            transition: border-color 0.3s ease;
+        }
+
+        .custom-input:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+
+        .confirm-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .confirm-button:hover {
+            background-color: #45a049;
+        }
+
+        /* Styles for payment section */
+        .payment-details {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f2f2f2;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .payment-details h2 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .payment-details p {
+            color: #666;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="confirmation-container">
+        <h1>Confirm your Booking</h1>
+        <div class="form-group">
+            <h2>Pay Now</h2>
+            <input type="text" class="custom-input" id="username" name="charge" value="Charge: {{ boarding.boarding_charge }} Rs." readonly>
+        </div>
+       
+        <form method="post" action="{% url 'confirmbooking' boarding_id=37 %}">
+            {% csrf_token %}
+            <button type="submit" class="confirm-button">Confirm Booking</button>
+        </form>
+
+        <!-- Payment Details Section -->
+        <div class="payment-details">
+            <h2>Payment Details</h2>
+            <p>Name: PP</p>
+            <p>Email: pp@gmail.com</p>
+            <!-- Add more payment details as needed -->
+        </div>
+        <br>
+    </div>
+
+</body>
+</html> {% endcomment %}
+

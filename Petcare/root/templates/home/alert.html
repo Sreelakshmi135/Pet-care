@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Alert</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .custom-alert {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+            padding: 20px; /* Increase padding for a larger box */
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .custom-alert .btn-yes, .custom-alert .btn-no {
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        .btn-yes {
+            background-color: #28a745;
+        }
+
+        .btn-no {
+            background-color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+
+<script>
+    // Function to show the custom-styled alert box
+    function showPetAlert() {
+        var customAlert = document.createElement('div');
+        customAlert.className = 'custom-alert';
+
+        var message = document.createElement('p');
+        message.textContent = "Do you want to add one more pet?";
+        customAlert.appendChild(message);
+
+        var btnYes = document.createElement('button');
+        btnYes.textContent = 'Yes';
+        btnYes.className = 'btn-yes';
+        btnYes.addEventListener('click', function() {
+            alert("You selected 'Yes'. Add one more pet logic can go here.");
+            document.body.removeChild(customAlert);
+        });
+        customAlert.appendChild(btnYes);
+
+        var btnNo = document.createElement('button');
+        btnNo.textContent = 'No';
+        btnNo.className = 'btn-no';
+        btnNo.addEventListener('click', function() {
+            alert("You selected 'No'. No more pets will be added.");
+            document.body.removeChild(customAlert);
+        });
+        customAlert.appendChild(btnNo);
+
+        document.body.appendChild(customAlert);
+    }
+
+    // Call the function to show the custom-styled alert box
+    showPetAlert();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Detection Results</title>
+    <style>
+        /* Global styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color:#457aba;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            background-color: #f1f1f1;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav a {
+            color: #00246B;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .health-condition-container {
+            background-color: #f1f1f1;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ccc;
+            margin-top: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #CADCFC;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ced4da;
+        }
+        h2 {
+            text-align: center;
+            color: #00246B;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Result container styles */
+        .result-container {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #f1f1f1;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ccc;
+            transition: transform 0.3s ease;
+        }
+        .result-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .result-container ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .label {
+            font-weight: bold;
+            color: #00246B;
+            text-transform: capitalize;
+        }
+        .score {
+            color: #28a745;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Image Detection Results</h1>
+    </header>
+
+    <nav>
+        <a href="{% url 'index' %}" class="nav-item nav-link">Home</a>
+        <a href="{% url 'about' %}" class="nav-item nav-link">About</a>
+        <a href="{% url 'service' %}" class="nav-item nav-link">Service</a>
+        
+        
+        </div>
+        <a href="{%url 'contact'%}" class="nav-item nav-link">Contact</a>
+    </nav>
+
+    <div class="container">
+        <div>
+            {% for result in results %}
+            <div class="result-container">
+                <ul>
+                    <li><span class="label">Label:</span> {{ result.label }}</li>
+                    <br>
+                    <li><span class="label">Score:</span> <span class="score">{{ result.score }}%</span></li>
+                    <br>
+                    <li><span class="label">Accuracy Level:</span> <span class="score"> {{ accuracy_level }}</span></li>
+                </ul>
+            </div>
+            {% endfor %}
+            <div class="health-condition-container">
+                <p><strong>Health Condition:</strong> Healthy</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

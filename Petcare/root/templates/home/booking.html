@@ -1,0 +1,603 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Paws and Tails</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" http-equiv="refresh" content="1">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet"> 
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Flaticon Font -->
+    <link href="lib/flaticon/font/flaticon.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="{% static 'home/css/style.min.css' %}" rel="stylesheet">
+    <link href="{% static 'home/css/style.min.css' %}" rel="stylesheet">
+    <script src="{% static 'home/js/main.js' %}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-nGfGlUkuytmJsG8r+jdU9zBP6S+3bgP931mSTjqfS0Kli/xW5aknFvVLwAqD3kqs" crossorigin="anonymous">
+
+  
+
+</head>
+
+<body>
+    
+    <!-- Topbar Start -->
+    
+        <div class="row bg-secondary py-2 px-lg-5">
+            <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
+                <div class="d-inline-flex align-items-center">
+                    <a class="text-white pr-3" href="">FAQs</a>
+                    <span class="text-white">|</span>
+                    <a class="text-white px-3" href="">Help</a>
+                    <span class="text-white">|</span>
+                    <a class="text-white pl-3" href="">Support</a>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center text-lg-right">
+                <div class="d-inline-flex align-items-center">
+                    <a class="text-white px-3" href="">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a class="text-white px-3" href="">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a class="text-white px-3" href="">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a class="text-white px-3" href="">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a class="text-white pl-3" href="">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row py-3 px-lg-5">
+            <div class="col-lg-4">
+                <a href="" class="navbar-brand d-none d-lg-block">
+                    <h1 class="m-0 display-5 text-capitalize"><span class="text-primary">Paws and</span>Tails</h1>
+                </a>
+            </div>
+            <div class="col-lg-8 text-center text-lg-right">
+                <div class="d-inline-flex align-items-center">
+                    <div class="d-inline-flex flex-column text-center pr-3 border-right">
+                        <h6>Opening Hours</h6>
+                        <p class="m-0">8.00AM - 9.00PM</p>
+                    </div>
+               
+                    <div class="d-inline-flex flex-column text-center px-3 border-right">
+                        <p>Hello {{ request.user.username }} Have a nice day!</p>
+                        
+                    </div>
+                   
+                    
+                    <div class="dropdown">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="adminDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {% if user.is_authenticated %}
+                                <i class="fas fa-user"></i> {{ user.username }}
+                            {% else %}
+                                <i class="fas fa-user"></i> Login/Sign Up
+                            {% endif %}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="adminDropdown">
+                            {% if user.is_authenticated %}
+                            <a class="dropdown-item" href="{% url 'profile_update' %}" class="btn btn-primary ml-lg-3">Profile</a>
+                            <a class="dropdown-item" href="{% url 'logout' %}" class="btn btn-primary ml-lg-3">Logout</a>
+                            {% else %}
+                            <a class="dropdown-item" href="login">Login</a>
+                            <a class="dropdown-item" href="signin">Sign Up</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="d-inline-flex flex-column text-center pl-3">
+                        <h6>Call Us</h6>
+                        <p class="m-0">+012 345 6789</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+
+    <!-- Navbar Start -->
+	<div class="container-fluid p-0">
+		<nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-lg-5">
+			<a href="" class="navbar-brand d-block d-lg-none">
+				<h1 class="m-0 display-5 text-capitalize font-italic text-white"><span class="text-primary">Safety</span>First</h1>
+			</a>
+			<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
+				<div class="navbar-nav mr-auto py-0">
+					<a href="{% url 'index' %}" class="nav-item nav-link">Home</a>
+					<a href="{% url 'about' %}" class="nav-item nav-link">About</a>
+					<a href="{% url 'service' %}" class="nav-item nav-link">Service</a>
+					
+					<div class="nav-item dropdown">
+						
+						<div class="dropdown-menu rounded-0 m-0">
+							<a href="blog.html" class="dropdown-item">Blog Grid</a>
+							<a href="single.html" class="dropdown-item">Blog Detail</a>
+						</div>
+					</div>
+					<a href="{%url 'contact'%}" class="nav-item nav-link">Contact</a>
+				</div>
+               
+	
+				<!-- Profile Logo (an example using an image) -->
+			
+				
+					<!--<img class="img-fluid" src="{% static 'home/img/profile.png' %}" style="width: 80px; height: 80px;" alt="">
+				</a>
+				
+				<!-- Profile Dropdown (an example using a select element) -->
+				
+			</div>
+		</nav>
+	</div>
+    <nav>
+        {% if user.is_authenticated %}
+        <ul>
+            <!-- Add the logout button here -->
+            
+        </ul>
+        {% else %}
+        <ul>
+            <!-- Add the logout button here -->
+            <li style="float: right;"><a href="{% url 'login' %}" style="color: blue;">Login</a></li>
+        </ul>
+        {% endif %}
+    </nav>
+	
+    <!-- Navbar End -->
+{% block extra_css %}
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-image: url('{% static "assets/img/bg_image_2.jpg" %}');
+    /* Replace with the actual path to your background image */
+    background-size: cover;
+    /* This will cover the entire viewport */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    /* This will keep the background fixed while scrolling */
+  }
+
+  header {
+    background-color: #fff;
+    /* Set the background color to white */
+  }
+
+  /* CSS for the form container */
+  .form-container {
+    max-width: 600px;
+    /* Adjust the width as needed */
+    margin: 0 auto;
+    /* Center the container horizontally */
+    padding: 20px;
+    /* Add padding to the container */
+    border: 1px solid #ccc;
+    /* Add a border around the container */
+    border-radius: 5px;
+    /* Add rounded corners to the container */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* Add a subtle box shadow */
+    background-color: #f9f9f9;
+    /* Set the background color */
+  }
+  body {
+    font-family: Arial, sans-serif;
+    background-image: url('{% static 'home/img/new-6.jpg' %}');
+    /* Replace with the actual path to your background image */
+    background-size: cover;
+    /* This will cover the entire viewport */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    /* This will keep the background fixed while scrolling */
+  }
+
+  /* Apply styles to form elements within the container */
+  .form-container input[type="text"],
+  .form-container input[type="number"],
+  .form-container input[type="date"],
+  .form-container input[type="button"],
+  .form-container select,
+  .form-container textarea,
+  .form-container label {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+  }
+
+  /* Style checkboxes and radio buttons */
+  .form-container input[type="checkbox"],
+  .form-container input[type="radio"] {
+    margin-right: 5px;
+  }
+  .wide-input {
+    width: 100%;
+}
+
+  /* Style the submit button */
+  .form-container input[type="submit"] {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s;
+  }
+
+  .form-container input[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+
+  .additional-test-container {
+    display: none;
+    margin-top: 10px;
+  }
+
+  .additional-test-container label {
+    display: block;
+  }
+
+  .additional-test-container select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+  }
+
+  .radio-box {
+    display: flex;
+    align-items: center;
+  }
+
+  .radio-label {
+    margin-right: 10px;
+  }
+
+  .new-address-fields.visible {
+    display: block;
+  }
+
+  .new-address-fields .form-group {
+    margin-right: 20px;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="form-container">
+  <!-- Your form content goes here -->
+  <form method="POST" action="">
+    {% csrf_token %}
+    
+
+
+
+        <body>
+            <table>
+            <h3><center>Book for your pet</center></h3>
+        
+            <form id="petRegistrationForm" method="POST" action="{% url 'cart' %}">
+              {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class=" p-4">
+                                <select id="petType1" name="petType1" onchange="updateBreeds(1)" required>
+                                    <option value="" selected disabled hidden>Select your Pet</option>
+                                    <option value="dog">Dog</option>
+                                    <option value="cat">Cat</option>
+                                    <option value="bird">Bird</option>
+                                    <option value="exotic">Exotic Pets</option>
+                                    <option value="other">Other</option>
+                                </select>
+                                
+                                <input type="text" id="name1" name="name1" placeholder="Name:" required>
+                                <input type="text" id="age1" name="age1" placeholder="Age" required>
+                                If vaccinated:
+                        <input type="checkbox" id="vaccinated1" name="vaccinated1" value="vaccinated" >
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="p-4">
+                                <select id="breed1" name="breed1" required></select>
+                                <select id="gender1" name="gender1" required>
+                                    <option value="" selected disabled hidden>Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                                <select id="pet-service" name="pet-service" required>
+                                    <option value="" selected disabled hidden>Select the services</option>
+                                    <option>Pet Medical Care</option>
+                                    <option>Pet Grooming</option>
+                                    <option>Pet Training</option>
+                                    <option>Pet Styling</option>
+                                    <option>Pet Vaccination</option>
+                                    <option>Pet Health Care</option>
+                                    <option>Pet Walking</option>
+                                    <option>Pet Sitting</option>
+                                    <option>Pet Day Care</option>
+                                    <option>Pet Photography</option>
+                                  </select>
+                            </div>
+                        </div>
+                    </div> <!-- End of first row -->
+                </div>
+                <div id="petInfoSections">
+                   
+                   
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                            <div class="form-group" style="background-color: #eaf7ff; padding: 10px; border-radius: 5px;">
+                               
+                                <input type="email" class="form-control" id="eMail" name="email" value="{{ user.email }}" style="width: 100%;">
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                            <div class="form-group" style="background-color: #eaf7ff; padding: 10px; border-radius: 5px;">
+                               
+                                <input type="text" class="form-control" id="username" name="username" value="{{ user.username }}">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- If vaccinated checkbox for Dog -->
+          
+                    {% comment %} <label for="addAnother1">Add Another Pet?</label>
+                    <input type="checkbox" id="addAnother1" name="addAnother1" onchange="showOtherPetFields(1)"> {% endcomment %}
+                </div>
+                <p>Preferred Date: <input type="date" id="preferred-date" name="preferred-date" required></p>
+                <p>Preferred Time:
+                    <label>Time: <input type="time" name="appointment_time" required></label><br>
+                 
+                </p>
+                <input type="hidden" name="redirect_url" value="{% url 'cart' %}">
+
+                <input type="submit" class="btn btn-lg btn-primary mt-3 px-4" value="Submit">
+                <a href="{%url 'cart'%}" class="btn btn-lg btn-primary mt-3 px-4">Add Services</a>
+                
+                {% comment %} <a href="{%url 'cart'%}" class="btn btn-lg btn-primary mt-3 px-4">Go To Cart</a> {% endcomment %}
+
+
+            </form>
+        
+            <script>
+                let petCounter = 1; // Track the number of pets added
+        
+                function updateBreeds(index) {
+                    const petType = document.getElementById(`petType${index}`).value;
+                    const breedSelect = document.getElementById(`breed${index}`);
+                    const vaccinatedCheckbox = document.getElementById(`vaccinatedCheckbox${index}`);
+        
+                    // Remove existing breed options
+                    breedSelect.innerHTML = "";
+        
+                    // Add breed options based on the selected pet type
+                    if (petType === "dog") {
+                        breedSelect.add(new Option("Labrador", "labrador"));
+                        breedSelect.add(new Option("German Shepherd", "german_shepherd"));
+                        breedSelect.add(new Option("Spitz", "spitz"));
+                        breedSelect.add(new Option("Golden Retreiver", "golden-retreiver"));
+                        breedSelect.add(new Option("Pug", "Pug"));
+                        breedSelect.add(new Option("Bull Dog", "bull-dog"));
+                        breedSelect.add(new Option("Shih-TZu", "shih-tzu"));
+                        breedSelect.add(new Option("Lasapsos", "lasapsos"));
+                        breedSelect.add(new Option("Beagle", "beagle"));
+                        breedSelect.add(new Option("Poodle", "poodle"));
+                        breedSelect.add(new Option("Siberian Husky", "Siberian Husky"));
+
+                        // Add more dog breeds here
+        
+                        // Show the "If vaccinated" checkbox for Dog
+                        vaccinatedCheckbox.style.display = "block";
+                    } else if (petType === "cat") {
+                        breedSelect.add(new Option("Siamese", "siamese"));
+                        breedSelect.add(new Option("Persian", "persian"));
+                        breedSelect.add(new Option("Maine Coon", "maine_coon"));
+                        breedSelect.add(new Option("Bengal", "bengal"));
+                        breedSelect.add(new Option("Sphynx", "sphynx"));
+                        breedSelect.add(new Option("Ragdoll", "ragdoll"));
+                        breedSelect.add(new Option("British Shorthair", "british_shorthair"));
+                        breedSelect.add(new Option("Abyssinian", "abyssinian"));
+                        breedSelect.add(new Option("Scottish Fold", "scottish_fold"));
+                        breedSelect.add(new Option("Norwegian Forest", "norwegian_forest"));
+                        breedSelect.add(new Option("Siberian", "siberian"));
+                        breedSelect.add(new Option("Oriental Shorthair", "oriental_shorthair"));
+                        breedSelect.add(new Option("Devon Rex", "devon_rex"));
+                        breedSelect.add(new Option("Cornish Rex", "cornish_rex"));
+                    
+                        vaccinatedCheckbox.style.display = "block";
+                        
+                        // Add more cat breeds here
+        
+                       
+                       
+                    } 
+                      else if (petType === "bird") { // Added condition for "Birds"
+                        breedSelect.add(new Option("Canary", "canary"));
+                        breedSelect.add(new Option("Parrot", "parrot"));
+                        breedSelect.add(new Option("Budgerigar", "budgerigar"));
+                        breedSelect.add(new Option("Cockatiel", "cockatiel"));
+                        breedSelect.add(new Option("Canary", "canary"));
+                        breedSelect.add(new Option("African Grey Parrot", "african_grey_parrot"));
+                        breedSelect.add(new Option("Cockatoo", "cockatoo"));
+                        breedSelect.add(new Option("Lovebird", "lovebird"));
+                        breedSelect.add(new Option("Finch", "finch"));
+                        breedSelect.add(new Option("Macaw", "macaw"));
+                        breedSelect.add(new Option("Conure", "conure"));
+                        breedSelect.add(new Option("Amazon Parrot", "amazon_parrot"));
+                        breedSelect.add(new Option("Budgie", "budgie"));
+                        breedSelect.add(new Option("Quaker Parrot", "quaker_parrot"));
+                        breedSelect.add(new Option("Parakeet", "parakeet"));
+                        breedSelect.add(new Option("Eclectus Parrot", "eclectus_parrot"));
+                // Add more bird breeds here
+
+                // Hide the "If vaccinated" checkbox for Birds
+                vaccinatedCheckbox.style.display = "none";
+            }else {
+                        // For other pet types
+                        breedSelect.add(new Option("Other Breed", "other_breed"));
+        
+                        // Hide the "If vaccinated" checkbox for Other
+                        vaccinatedCheckbox.style.display = "none";
+                    }
+                }
+        
+                function showOtherPetFields(index) {
+                    const addAnother = document.getElementById(`addAnother${index}`);
+                    if (addAnother.checked) {
+                        petCounter++;
+                        const newPetInfoSection = document.createElement('div');
+                        newPetInfoSection.innerHTML = `
+
+                        
+                            <h4><center>Pet Information - Pet ${petCounter}</center> </h4>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class=" p-4">
+                                        <select id="petType${petCounter}" name="petType${petCounter}" onchange="updateBreeds(${petCounter})">
+                                            <option value="" selected disabled hidden>Select Your Pet</option>
+                                            <option value="dog">Dog</option>
+                                            <option value="cat">Cat</option>
+                                            <option value="bird">Bird</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                        <input type="text" id="name${petCounter}" name="name${petCounter}" placeholder="Name">
+                                        <input type="text" id="age${petCounter}" name="age${petCounter}" placeholder="Age">
+                                        If vaccinated:
+                    
+                                    <input type="checkbox" id="vaccinated${petCounter}" name="vaccinated${petCounter}">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="p-4">
+                                        <select id="breed${petCounter}" name="breed${petCounter}"></select>
+                                        <select id="gender${petCounter}" name="gender${petCounter}">
+                                            <option value="male">Male</option>
+                                            <option value="female">Female</option>
+                                        </select>
+                                        <select id="service${petCounter}" name="service${petCounter}">
+                                            <option value="" selected disabled hidden>Select the services</option>
+                                            <option>Pet Grooming</option>
+                                            <option>Petr Training</option>
+                                            <option>Pet Styling</option>
+                                            <option>Pet Vaccination</option>
+                                            <option>Pet Health Care</option>
+                                            <option>Pet ....</option>
+                                            </select>
+                                    </div>
+                                </div>
+                            </div> <!-- End of first row -->
+                        </div>
+                    </div>
+                            <!-- If vaccinated checkbox for Dog -->
+                           
+                           
+                            
+                            
+                           
+                            
+                           
+                          
+                            <label for="addAnother${petCounter}">Add Another Pet?</label>
+                            <input type="checkbox" id="addAnother${petCounter}" name="addAnother${petCounter}" onchange="showOtherPetFields(${petCounter})">
+                        `;
+                        document.getElementById('petInfoSections').appendChild(newPetInfoSection);
+                    }
+                }
+            </script> 
+  </div>
+  </form>
+  </div>
+  {% endblock %}
+  {% block extra_js %}
+ 
+   
+  {% endblock %}
+                          
+                              <div>
+                                <div class="form-group">
+                                  
+                                 
+                              </div>
+                            </form>
+                            
+                            <form method="POST">
+                              {% csrf_token %}
+                              <div class="frminput">
+                                  <!-- Fields for booking services for pet 1 go here -->
+                              </div>
+                              <!-- Add a separate submit button for each pet -->
+                              <div class="form-group">
+                              </div>
+                            </form>
+                                 
+                                  
+                              </div>
+                          </form>
+                      </div>
+                    </div>
+                </div>
+            </div>
+  <link href="{% static 'home/css/style.min.css' %}" rel="stylesheet">
+  
+
+
+
+    <!-- Back to Top -->
+
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="mail/jqBootstrapValidation.min.js"></script>
+    <script src="mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>
+  
+  
+ 
+  
+        
+

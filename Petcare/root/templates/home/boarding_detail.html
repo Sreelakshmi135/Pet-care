@@ -1,0 +1,213 @@
+{% comment %} <html>
+    <body>
+
+{% block content %}
+  <h1>{{ boarding.name }} - Boarding Details</h1>
+  <p>Type: {{ boarding.type }}</p>
+  <p>Breed: {{ boarding.breed }}</p>
+  <p>Age: {{ boarding.age }}</p>
+  <p>name: {{ boarding.name }}</p>
+  <p>Gender: {{ boarding.gender }}</p>
+  <p>Service: {{ boarding.service }}</p>
+  <p>Email Id: {{ boarding.email_id }}</p>
+  <p>User name: {{ boarding.user_name }}</p>
+  <p>Pickup Date: {{ boarding.pickup_date }}</p>
+  <p>Drop date: {{ boarding.drop_date }}</p>
+  <p>Appointment time: {{ boarding.appointment_time }}</p>
+  <p>Street name: {{ boarding.street }}</p>
+  <p>City name: {{ boarding.city }}</p>
+  <p>State: {{ boarding.state }}</p>
+  <p>Postal code: {{ boarding.postal_code }}</p>
+  <!-- Add other details as needed -->
+{% endblock %}</body>
+    </html> {% endcomment %}
+
+
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ boarding.name }} - Boarding Details</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .details-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px; /* Adjust the max-width to your preference */
+            width: 100%;
+            text-align: left;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .details-container h1 {
+            color: #333;
+            width: 100%;
+        }
+
+        .detail-pair {
+            display: flex;
+            justify-content: space-between;
+            width: 48%; /* Adjust the width based on your preference */
+            margin-bottom: 10px;
+        }
+
+        .detail-label {
+            font-weight: bold;
+            text-align: right;
+            margin-right: 10px;
+            flex-basis: 30%; /* Adjust the flex-basis for label width */
+            background-color: #FF7F50; /* Add background color */
+            color: #fff; /* Set text color to white */
+            padding: 10px; /* Add padding for spacing */
+            border-radius: 5px; /* Add border-radius for rounded corners */
+        }
+
+        .detail-value {
+            margin-bottom: 20px;
+            flex-basis: 60%; /* Adjust the flex-basis for value width */
+            background-color: #eee; /* Add background color for values */
+            padding: 10px; /* Add padding for spacing */
+            border-radius: 5px; /* Add border-radius for rounded corners */
+        }
+        .verify-button {
+            width: 150px; /* Adjust the width as needed */
+            background-color: 	#FF4500;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+
+        .verified {
+            background-color: #28a745;
+        }
+    
+    </style>
+</head>
+<body>
+
+    <div class="details-container">
+        <h1>{{ boarding.name }} - Boarding Details</h1>
+
+        <div class="detail-pair">
+            <div class="detail-label">Type:</div>
+            <div class="detail-value">{{ boarding.type }}</div>
+        </div>
+
+        <div class="detail-pair">
+            <div class="detail-label">Breed:</div>
+            <div class="detail-value">{{ boarding.breed }}</div>
+        </div>
+        
+        <div class="detail-pair">
+           <div class="detail-label">Age:</div>
+           <div class="detail-value">{{ boarding.age }}</div>
+        </div>
+
+        <div class="detail-pair">
+           <div class="detail-label">Name:</div>
+           <div class="detail-value">{{ boarding.name }}</div>
+        </div>
+
+        <div class="detail-pair">
+           <div class="detail-label">Gender:</div>
+           <div class="detail-value">{{ boarding.gender }}</div>
+        </div>
+
+        <div class="detail-pair">
+            <div class="detail-label">Service:</div>
+            <div class="detail-value">{{ boarding.service }}</div>
+        </div>
+
+        <div class="detail-pair">
+            <div class="detail-label">Email Id:</div>
+            <div class="detail-value">{{ boarding.email_id }}</div>
+        </div>
+
+        <div class="detail-pair">
+            <div class="detail-label">User name:</div>
+            <div class="detail-value">{{ boarding.user_name }}</div>
+        </div>
+      
+        <div class="detail-pair">
+        <div class="detail-label">Pickup date:</div>
+        <div class="detail-value">{{ boarding.pickup_date }}</div>
+    </div>
+
+        
+        <div class="detail-pair">
+            <div class="detail-label">Drop date:</div>
+            <div class="detail-value">{{ boarding.drop_date }}</div>
+        </div>
+
+            <div class="detail-pair">
+                <div class="detail-label">Appointmnet time:</div>
+                <div class="detail-value">{{ boarding.appointment_time }}</div>
+            </div>
+
+                <div class="detail-pair">
+                    <div class="detail-label">Street:</div>
+                    <div class="detail-value">{{ boarding.street }}</div>
+                </div>
+
+                    <div class="detail-pair">
+                        <div class="detail-label">City:</div>
+                        <div class="detail-value">{{ boarding.city }}</div>
+                    </div>
+
+                        <div class="detail-pair">
+                            <div class="detail-label">State:</div>
+                            <div class="detail-value">{{ boarding.state }}</div>
+                        </div>
+
+                            <div class="detail-pair">
+                                <div class="detail-label">Postal code:</div>
+                                <div class="detail-value">{{ boarding.postal_code }}</div>
+                            </div>
+                            <button id="verifyButton" class="verify-button" onclick="verify()">Verify</button>
+       
+
+        <!-- Add other details as needed -->
+
+        <a href="{% url 'boardingindex' %}" style="text-decoration: none; color: #007bff;">Back to Boarding Index</a>
+    </div>
+    <script>
+        function verify() {
+            var button = document.getElementById("verifyButton");
+            button.innerHTML = "Verified";
+            button.classList.add("verified");
+            button.disabled = true;  // Disable the button after verification (optional)
+        
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "{% url 'send_verification_email' %}", true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                console.log("Email sent successfully");
+            }
+        };
+        xhr.send(JSON.stringify({ email: "{{ boarding.email_id }}" }));
+    }
+
+    </script>
+
+</body>
+</html>

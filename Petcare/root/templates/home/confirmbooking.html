@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Successful</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        
+        .confirmation-container {
+            background-color: #8AAAE5;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Increased shadow for depth */
+        }
+        
+        h1 {
+            text-align: center;
+            color: #00246B; /* Blue color for emphasis */
+        }
+        
+        .confirmation-message {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+        }
+        
+        .appointment-details {
+            padding: 10px;
+            border: 1px solid #007bff; /* Blue border for emphasis */
+            border-radius: 4px;
+            background-color: #fff;
+        }
+        
+        .appointment-details p {
+            margin-bottom: 10px;
+        }
+        
+        .appointment-details ul {
+            padding: 0;
+            list-style-type: none;
+        }
+        
+        .appointment-details li {
+            margin-bottom: 5px;
+        }
+        
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+        .appointment-details {
+            padding: 10px;
+            border: 1px solid #007bff; /* Blue border for emphasis */
+            border-radius: 4px;
+            background-color: #fff;
+        }
+        
+        .appointment-details p {
+            margin-bottom: 10px;
+        }
+        
+        .detail-container {
+            padding: 10px;
+        }
+        
+        .detail-item {
+            margin-bottom: 5px;
+        }
+        
+        
+        </style>
+
+</head>
+<body>
+    <br>
+    <br>
+    <div class="confirmation-container">
+        <h1>Appointment Confirmed!</h1>
+        <div class="confirmation-message">
+            <p>Your appointment has been successfully confirmed. Please find the details below:</p>
+        </div>
+        
+        
+        <div class="appointment-details">
+            <p>Appointment has been confirmed for:</p>
+            <div class="detail-container">
+                <div class="detail-item">
+                    <strong>Full Name:</strong> {{ user.username }}
+                </div>
+                <div class="detail-item">
+                    <strong>Email   :</strong> {{ user.email }}
+                </div>
+                <div class="detail-item">
+                    <strong>Username:</strong> {{ user.username }}
+                </div>
+            </div>
+        </div>
+        <br>
+        
+        <button onclick="printAndDownload()">Save</button>
+        <a href="{%url 'index'%}" class="btn btn-lg btn-primary mt-3 px-4">Home</a>
+    </div>
+    
+<script>
+function printAndDownload() {
+    // Print the page
+ 
+    
+    // Create a new Blob containing the current page content
+    const blob = new Blob([document.documentElement.outerHTML], {type: 'text/html'});
+    
+    // Create a temporary link element
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    
+    // Set the filename for the downloaded file
+    link.download = 'Appointment Successfull.pdf';
+    
+    // Simulate a click on the link to trigger download
+    link.click();
+    
+    // Remove the temporary link element
+    URL.revokeObjectURL(link.href);
+}
+</script>
+
+</body>
+</html>
